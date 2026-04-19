@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero — Baxstar Fishing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #08080a;
+  --charcoal: #111114;
+  --dark: #18181c;
+  --mid-dark: #222228;
+  --red: #c1272d;
+  --red-bright: #e63946;
+  --red-deep: #8b1a1f;
+  --cream: #f0ece4;
+  --warm-white: #faf8f4;
+  --gold: #c9a84c;
+  --gold-dim: #9a7d3a;
+  --slate: #6b6b78;
+  --light-slate: #9a9aaa;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-accent: 'Cormorant Garamond', serif;
+  --max-w: 1320px;
+  --section-pad: clamp(80px, 10vw, 140px);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
+
+/* Shared buttons */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 17px 38px;
+  background: var(--red); color: white;
+  font-family: var(--font-body); font-weight: 600; font-size: 13px;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-primary:hover {
+  background: var(--red-bright); transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(193, 39, 45, 0.45);
+}
+.btn-primary:hover::after { opacity: 1; }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 17px 32px;
+  background: transparent; color: var(--cream);
+  font-family: var(--font-body); font-weight: 500; font-size: 13px;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: 1px solid rgba(240,236,228,0.2);
+  cursor: pointer; transition: all 0.3s ease;
+}
+.btn-ghost:hover {
+  border-color: rgba(240,236,228,0.55);
+  background: rgba(240,236,228,0.05);
+}
+
+/* Shared section elements */
+.section-tag {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--red-bright); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-tag::before {
+  content: ''; width: 24px; height: 1px; background: var(--red);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1; letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--warm-white);
+  margin-bottom: 28px;
+}
+.section-title span { color: var(--red-bright); }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; overflow: hidden;
+}
+.hero__bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(8,8,10,0.12) 0%, rgba(8,8,10,0.0) 22%,
+      rgba(8,8,10,0.3) 52%, rgba(8,8,10,0.88) 78%,
+      rgba(8,8,10,1) 100%),
+    url('Baxstar_Fishing_Faces_of_Fargo.jpg') center 35%/cover no-repeat;
+  transform: scale(1.04);
+  animation: heroZoom 24s ease-in-out infinite alternate;
+}
+.hero__grain {
+  position: absolute; inset: 0; z-index: 1; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat; background-size: 200px 200px; pointer-events: none;
+}
+@keyframes heroZoom {
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1.1); }
+}
+.hero::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--red) 30%, var(--red-bright) 70%, transparent 100%);
+  z-index: 10;
+}
+.hero__content {
+  position: relative; z-index: 5;
+  padding: 0 clamp(24px, 5vw, 80px) clamp(44px, 5vw, 64px);
+  max-width: 840px;
+}
+.hero__tag {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 12px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--red-bright); margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero__tag::before {
+  content: ''; width: 36px; height: 1px; background: var(--red);
+}
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 8.5vw, 100px);
+  line-height: 0.9; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--warm-white);
+  margin-bottom: 24px;
+}
+.hero__title span { display: block; color: var(--red-bright); }
+.hero__sub {
+  font-family: var(--font-accent);
+  font-size: clamp(18px, 2.2vw, 23px);
+  font-weight: 400; font-style: italic;
+  color: rgba(240,236,228,0.72); line-height: 1.6;
+  margin-bottom: 40px; max-width: 600px;
+}
+.hero__actions {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px;
+}
+.hero__trust {
+  position: relative; z-index: 5;
+  border-top: 1px solid rgba(240,236,228,0.07);
+  padding: clamp(20px, 3vw, 30px) clamp(24px, 5vw, 80px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 28px; flex-wrap: wrap;
+  background: linear-gradient(180deg, transparent, rgba(8,8,10,0.4));
+}
+.trust-item { display: flex; align-items: center; gap: 14px; }
+.trust-item__icon {
+  width: 38px; height: 38px;
+  border: 1px solid rgba(193,39,45,0.3); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red-bright); font-size: 15px; flex-shrink: 0;
+}
+.trust-item__text { font-size: 13px; }
+.trust-item__text strong {
+  display: block; font-size: 15px; color: var(--warm-white);
+  font-weight: 600; letter-spacing: 0.3px;
+}
+.trust-item__text span {
+  color: var(--slate); font-weight: 400; font-size: 12px;
+}
+.hero__avail {
+  position: absolute; top: 28px; right: 32px; z-index: 10;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  background: rgba(8,8,10,0.72);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(240,236,228,0.07);
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  font-weight: 500; color: rgba(240,236,228,0.75);
+}
+.pulse-dot {
+  width: 7px; height: 7px;
+  background: #22c55e; border-radius: 50%;
+  animation: pulse 2.2s ease-in-out infinite; flex-shrink: 0;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+@media (max-width: 640px) {
+  .hero__trust { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero__avail { top: 16px; right: 16px; }
+}
+
+</style>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__grain"></div>
+
+  <div class="hero__avail">
+    <div class="pulse-dot"></div>
+    Now Booking — Summer 2026
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__tag">Detroit Lakes, Minnesota — Private Charters</div>
+    <h1 class="hero__title">
+      YOUR GUIDE.<br>
+      <span>YOUR WATER.</span>
+    </h1>
+    <p class="hero__sub">
+      Brady Baxter is a 5x Master Angler with 30 years on Minnesota's most 
+      productive waters. Every trip is private. Every detail is handled.
+      There is no other experience like it in the region.
+    </p>
+    <div class="hero__actions">
+      <a href="https://fareharbor.com/embeds/book/baxstarfishing/" class="btn-primary">
+        Reserve Your Trip
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#experiences" class="btn-ghost">Explore Experiences</a>
+    </div>
+  </div>
+
+  <div class="hero__trust">
+    <div class="trust-item">
+      <div class="trust-item__icon">★</div>
+      <div class="trust-item__text">
+        <strong>4.9 Stars</strong>
+        <span>100+ Google Reviews</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item__icon">◆</div>
+      <div class="trust-item__text">
+        <strong>5x Master Angler</strong>
+        <span>State Award Winner</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item__icon">▶</div>
+      <div class="trust-item__text">
+        <strong>Forbes Featured</strong>
+        <span>& KARE 11 Television</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item__icon">◎</div>
+      <div class="trust-item__text">
+        <strong>Always Private</strong>
+        <span>Never shared boats</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
