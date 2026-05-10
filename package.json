@@ -1,0 +1,8 @@
+{
+  "name": "v2baxstarwebsite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:wix": "node tools/build-wix-sections.mjs"
+  }
+}
