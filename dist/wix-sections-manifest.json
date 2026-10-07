@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-10-07T04:07:23.965Z",
+  "sourceDirectory": "sections",
+  "wixDestination": "Manual paste into Wix HTML embed unless/until Wix Git integration is enabled.",
+  "sections": [
+    {
+      "file": "sections/12-seasonal-cta.html",
+      "hash": "16f9637b0d0c",
+      "characters": 6406
+    }
+  ]
+}

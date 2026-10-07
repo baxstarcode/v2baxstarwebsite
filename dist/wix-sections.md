@@ -1,3 +1,16 @@
+# Wix Section Paste-Ready Bundle
+
+Generated: 2026-10-07T04:07:23.965Z
+
+GitHub is the source of truth. Edit files in `sections/*.html`, then use this generated file as the Wix paste checklist.
+
+## 12-seasonal-cta.html
+
+Source: `sections/12-seasonal-cta.html`  
+Version hash: `16f9637b0d0c`  
+Characters: 6406
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -201,3 +214,5 @@ img { display: block; max-width: 100%; }
 
 </body>
 </html>
+```
+
